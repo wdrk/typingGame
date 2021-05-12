@@ -13,15 +13,22 @@ const timeDisplay = document.querySelector(".time");
 const button = document.querySelector(".button");
 
 const run = () => {
-  isPlaying = true;
-  time = GAME_TIME;
-  timeInterval = setInterval(countDown, 1000);
-  checkInterval = setInterval(checkStatus, 50);
+  if (isPlaying) {
+    return;
+  } else {
+    isPlaying = true;
+    time = GAME_TIME;
+    wordInput.focus();
+    scoreDisplay.innerText = 0;
+    timeInterval = setInterval(countDown, 1000);
+    checkInterval = setInterval(checkStatus, 50);
+    buttonChange("게임중");
+  }
 };
 
 const checkStatus = () => {
   if (isPlaying === false && time === 0) {
-    buttonChange("게임종료...");
+    buttonChange("게임시작");
     clearInterval(checkInterval);
   }
 };
