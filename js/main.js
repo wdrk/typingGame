@@ -30,6 +30,8 @@ const checkStatus = () => {
   if (isPlaying === false && time === 0) {
     buttonChange("게임시작");
     clearInterval(checkInterval);
+    score = 0;
+    scoreDisplay.innerText = score;
   }
 };
 
