@@ -58,6 +58,17 @@ const buttonChange = (text) => {
 
 // 화면에 표시할 단어 불러오기
 const getWords = () => {
+  // Make a request for a user with a given ID
+  axios
+    .get("https://random-word-api.herokuapp.com/word?number=300")
+    .then(function (response) {
+      // handle success
+      words = response.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
   words = ["hello", "banana", "apple", "cherry"];
   buttonChange("게임시작");
 };
