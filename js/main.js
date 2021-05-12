@@ -63,14 +63,18 @@ const getWords = () => {
     .get("https://random-word-api.herokuapp.com/word?number=300")
     .then(function (response) {
       // handle success
-      words = response.data;
+      response.data.forEach((word) => {
+        if (word.length < 10) {
+          words.push(word);
+        }
+        buttonChange("게임시작");
+        console.log(words);
+      });
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     });
-  words = ["hello", "banana", "apple", "cherry"];
-  buttonChange("게임시작");
 };
 // 남은시간 설정
 const countDown = () => {
@@ -83,6 +87,7 @@ const countDown = () => {
 
 // 초기화
 const init = (() => {
+  buttonChange("게임로딩중...");
   getWords();
   wordInput.addEventListener("input", checkMatch);
 })();
