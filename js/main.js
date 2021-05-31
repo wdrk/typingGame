@@ -33,16 +33,16 @@ function getWords() {
       // handle success
       response.data.forEach(word => {
         if (word.length < 10) {
-          words.push(response.data);
+          words.push(word.toLowerCase());
         }
       });
+      buttonChange("게임시작");
+      wordDisplay.innerText = words[0];
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     });
-  words = ["hello", "banana", "apple", "cherry"];
-  buttonChange("게임시작");
 }
 
 // 단어 일치 체크
@@ -84,6 +84,7 @@ function countDown() {
 }
 
 function init() {
+  buttonChange("게임로딩중");
   getWords();
   wordInput.addEventListener("input", checkMatch);
 }
