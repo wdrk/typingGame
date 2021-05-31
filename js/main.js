@@ -12,6 +12,11 @@ const scoreDisplay = document.querySelector(".score");
 const timeDisplay = document.querySelector(".time");
 const button = document.querySelector(".button");
 
+function randomWordPick() {
+  const randomIndex = Math.floor(Math.random() * words.length);
+  wordDisplay.innerText = words[randomIndex];
+}
+
 function checkStatus() {
   if (!isPlaying && time === 0) {
     buttonChange("게임시작");
@@ -20,9 +25,11 @@ function checkStatus() {
 }
 function buttonChange(text) {
   button.innerText = text;
-  text === "게임시작"
-    ? button.classList.remove("loading")
-    : button.classList.add("loading");
+  if (text === "게임시작") {
+    button.classList.remove("loading");
+  } else {
+    button.classList.add("loading");
+  }
 }
 
 // 단어 불러오기
@@ -37,7 +44,7 @@ function getWords() {
         }
       });
       buttonChange("게임시작");
-      wordDisplay.innerText = words[0];
+      randomWordPick();
     })
     .catch(function (error) {
       // handle error
@@ -55,8 +62,7 @@ function checkMatch() {
     score++;
     scoreDisplay.innerText = score;
     time = GAME_TIME;
-    const randomIndex = Math.floor(Math.random() * words.length);
-    wordDisplay.innerText = words[randomIndex];
+    randomWordPick();
   }
 }
 init();
@@ -69,7 +75,8 @@ function run() {
   isPlaying = true;
   time = GAME_TIME;
   wordInput.focus();
-  scoreDisplay.innerText = 0;
+  score = 0;
+  scoreDisplay.innerText = score;
   timeInterval = setInterval(countDown, 1000);
   checkInterval = setInterval(checkStatus, 50);
   buttonChange("게임중");
