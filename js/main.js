@@ -24,8 +24,13 @@ function buttonChange(text) {
   button.innerText = text;
   if (text === "게임시작") {
     button.classList.remove("loading");
+  } else if (text === "게임중") {
+    button.classList.add("loading");
+    wordInput.disabled = false;
+    wordInput.focus();
   } else {
     button.classList.add("loading");
+    wordInput.disabled = true;
   }
 }
 
@@ -79,7 +84,6 @@ function run() {
   }
   isPlaying = true;
   time = GAME_TIME;
-  wordInput.focus();
   score = 0;
   scoreDisplay.innerText = score;
   timeInterval = setInterval(countDown, 1000);
