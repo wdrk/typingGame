@@ -7,19 +7,49 @@
     <title>Typing Game</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/18514bbc93.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="header">
-      <h1>타이핑 마스터!</h1>
-    </div>
-    <div class="word-display">...</div>
-    <div class="word-input-box">
-      <input type="text" class="word-input" />
-    </div>
-    <div class="game-info">
-      <div>남은시간: <span class="time">0</span>초</div>
-      <div>획득점수: <span class="score">0</span>점</div>
-    </div>
-    <button class="button loading" onclick="run()">게임을 불러오는중...</button>
+    <header class="header">
+      <h1 id="title">
+        타이핑 마스터! <i class="fas fa-keyboard" id="icon-keyboard"></i>
+      </h1>
+    </header>
+    <section class="word-section">
+      <div id="word-display">...</div>
+      <div class="word-input-box">
+        <input type="text" class="word-input" />
+      </div>
+      <div class="game-info">
+        <div>남은시간: <span id="time">0</span>초</div>
+        <div>획득점수: <span id="score">0</span>점</div>
+      </div>
+    </section>
+    <nav id="button-section">
+      <button class="button loading" onclick="run()">
+        게임을 불러오는중...
+      </button>
+    </nav>
+    <footer>
+      <article id="source">
+        <div class="original">
+          원본 :
+          <a href="https://www.youtube.com/watch?v=_CsGSE5gwTA"
+            ><i class="fab fa-youtube" id="icon-youtube"></i
+          ></a>
+          code Scalper의 Vanilla 자바스크립트 자바게임 만들기! 실전코스
+        </div>
+        <div class="edit">
+          수정
+          <a href="https://github.com/wdrk/typingGame"
+            ><i class="fab fa-github" id="icon-github"></i
+          ></a>
+          wdrk
+        </div>
+      </article>
+    </footer>
   </body>
 </html>
