@@ -3,7 +3,8 @@
   padding: 0;
 }
 
-body {
+body,
+.word-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +12,8 @@ body {
 }
 
 .header {
+  display: flex;
+  justify-content: center;
   width: 100%;
   background-color: #3b5999;
   color: #fff;
@@ -18,7 +21,7 @@ body {
   padding: 1rem;
 }
 
-.word-display {
+#word-display {
   margin-top: 3rem;
   font-size: 80px;
   color: #3b5999;
@@ -41,8 +44,8 @@ body {
   font-size: 1rem;
 }
 
-.time,
-.score {
+#time,
+#score {
   font-size: 30px;
 }
 
@@ -59,4 +62,34 @@ body {
 .loading {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+#source {
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: 5rem;
+  width: 100%;
+  text-align: center;
+}
+
+#source .original,
+#source .edit {
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+#icon-github {
+  font-size: 1rem;
+}
+#icon-youtube {
+  color: #ff0000;
+  font-size: 1rem;
+}
+
+#icon-keyboard {
+  transform: rotate(-30deg);
 }
