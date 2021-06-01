@@ -6,10 +6,10 @@ let timeInterval;
 let checkInterval;
 let words = [];
 
-const wordDisplay = document.querySelector(".word-display");
+const wordDisplay = document.querySelector("#word-display");
 const wordInput = document.querySelector(".word-input");
-const scoreDisplay = document.querySelector(".score");
-const timeDisplay = document.querySelector(".time");
+const scoreDisplay = document.querySelector("#score");
+const timeDisplay = document.querySelector("#time");
 const button = document.querySelector(".button");
 
 // 단어를 랜덤으로 선택
@@ -86,6 +86,14 @@ function checkMatch() {
   }
 }
 
+function setCountDown() {
+  time > 0 ? time-- : (isPlaying = false);
+  if (!isPlaying) {
+    clearInterval(timeInterval);
+  }
+  timeDisplay.innerText = time;
+}
+
 // 게임 실행
 function run() {
   if (isPlaying) {
@@ -98,14 +106,6 @@ function run() {
   timeInterval = setInterval(setCountDown, 1000);
   checkInterval = setInterval(checkStatus, 50);
   setButton("게임중");
-}
-
-function setCountDown() {
-  time > 0 ? time-- : (isPlaying = false);
-  if (!isPlaying) {
-    clearInterval(timeInterval);
-  }
-  timeDisplay.innerText = time;
 }
 
 // 프로그램 실행 시 초기화하는 함수
