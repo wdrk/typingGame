@@ -2,7 +2,9 @@
 
 #### [code Scalper](https://www.youtube.com/channel/UC1wWTimSew9rYzEZRVYVlbg)의 [Vanilla 자바스크립트 타자게임 만들기! 실전코스](https://youtu.be/_CsGSE5gwTA)를 학습한 저장소입니다.
 
-#### 클론코딩 이후 개인적으로 추가, 수정한 사항
+#### 클론코딩 이후 개인적으로 추가, 수정한 사항입니다.
+
+> JavaScript
 
 - 사용자가 입력할 때와 입력하지 않을 때를 직관적으로 알 수 있게 구성
   - 게임중이 아닐때 input창에 disabled 옵션을 적용
@@ -12,3 +14,9 @@
 - axios를 사용해서 단어 정보를 불러오던 것을 async, await을 통해 fetch 함수로 불러오도록 변경
 - 함수 이름을 역할에 따라 settet, getter형식으로 변경
 - 단어를 랜덤으로 선택하는 코드를 getRandomWord() 함수로 구성하여 여러 구간에서 활용
+
+> HTML, CSS
+
+- 시맨틱 태그로 구조를 재배치
+- Font awesome의 keyboard, youtube, github 아이콘 추가
+- footer 영역을 추가하여 출처를 표기
