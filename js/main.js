@@ -13,7 +13,7 @@ const timeDisplay = document.querySelector(".time");
 const button = document.querySelector(".button");
 
 // 단어를 랜덤으로 선택
-function randomWordPick() {
+function getRandomWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
   wordDisplay.innerText = words[randomIndex];
 }
@@ -29,7 +29,7 @@ function setWordInput(state) {
 }
 
 // 버튼의 html class를 조작해서 게임 상태별로 버튼의 CSS를 바꾸기
-function buttonChange(text) {
+function setButton(text) {
   button.innerText = text;
   if (text === "게임시작") {
     button.classList.remove("loading");
@@ -48,7 +48,7 @@ function checkStatus() {
   if (!isPlaying && time === 0) {
     wordInput.disabled = true;
     wordInput.placeholder = "게임시작 버튼을 눌러주세요";
-    buttonChange("게임시작");
+    setButton("게임시작");
     clearInterval(checkInterval);
   }
 }
@@ -65,8 +65,8 @@ async function getWords() {
         words.push(word);
       }
     });
-    buttonChange("게임시작");
-    randomWordPick();
+    setButton("게임시작");
+    getRandomWord();
   } else {
     alert(`Random Words Loading is Failed`);
   }
@@ -82,7 +82,7 @@ function checkMatch() {
     score++;
     scoreDisplay.innerText = score;
     time = GAME_TIME;
-    randomWordPick();
+    getRandomWord();
   }
 }
 
@@ -95,12 +95,12 @@ function run() {
   time = GAME_TIME;
   score = 0;
   scoreDisplay.innerText = score;
-  timeInterval = setInterval(countDown, 1000);
+  timeInterval = setInterval(setCountDown, 1000);
   checkInterval = setInterval(checkStatus, 50);
-  buttonChange("게임중");
+  setButton("게임중");
 }
 
-function countDown() {
+function setCountDown() {
   time > 0 ? time-- : (isPlaying = false);
   if (!isPlaying) {
     clearInterval(timeInterval);
@@ -110,7 +110,7 @@ function countDown() {
 
 // 프로그램 실행 시 초기화하는 함수
 (function init() {
-  buttonChange("게임로딩중");
+  setButton("게임로딩중");
   getWords();
   wordInput.addEventListener("input", checkMatch);
 })();
