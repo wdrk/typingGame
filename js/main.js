@@ -37,6 +37,7 @@ function buttonChange(text) {
 // 게임 상태를 감지
 function checkStatus() {
   if (!isPlaying && time === 0) {
+    wordInput.disabled = true;
     buttonChange("게임시작");
     clearInterval(checkInterval);
   }
