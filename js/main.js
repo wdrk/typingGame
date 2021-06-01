@@ -18,6 +18,16 @@ function randomWordPick() {
   wordDisplay.innerText = words[randomIndex];
 }
 
+function setWordInput(state) {
+  if (state) {
+    wordInput.disabled = true;
+    wordInput.placeholder = "게임시작 버튼을 눌러주세요";
+  } else {
+    wordInput.disabled = false;
+    wordInput.placeholder = "";
+  }
+}
+
 // 버튼의 html class를 조작해서 게임 상태별로 버튼의 CSS를 바꾸기
 function buttonChange(text) {
   button.innerText = text;
@@ -25,11 +35,11 @@ function buttonChange(text) {
     button.classList.remove("loading");
   } else if (text === "게임중") {
     button.classList.add("loading");
-    wordInput.disabled = false;
+    setWordInput(false);
     wordInput.focus();
   } else {
     button.classList.add("loading");
-    wordInput.disabled = true;
+    setWordInput(true);
   }
 }
 
@@ -37,6 +47,7 @@ function buttonChange(text) {
 function checkStatus() {
   if (!isPlaying && time === 0) {
     wordInput.disabled = true;
+    wordInput.placeholder = "게임시작 버튼을 눌러주세요";
     buttonChange("게임시작");
     clearInterval(checkInterval);
   }
