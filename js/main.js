@@ -19,7 +19,6 @@ function randomWordPick() {
 }
 
 // 버튼의 html class를 조작해서 게임 상태별로 버튼의 CSS를 바꾸기
-// ! input disabled true, false 추가하기
 function buttonChange(text) {
   button.innerText = text;
   if (text === "게임시작") {
@@ -44,24 +43,22 @@ function checkStatus() {
 }
 
 // 외부 API로 랜덤한 단어 불러오기
-// ! fetch()로 바꿔보기
-function getWords() {
-  axios
-    .get("https://random-word-api.herokuapp.com/word?number=100")
-    .then(function (response) {
-      // handle success
-      response.data.forEach(word => {
-        if (word.length < 10) {
-          words.push(word.toLowerCase());
-        }
-      });
-      buttonChange("게임시작");
-      randomWordPick();
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
+async function getWords() {
+  const response = await fetch(
+    "https://random-word-api.herokuapp.com/word?number=100"
+  );
+  if (response.ok) {
+    const json = await response.json();
+    json.forEach(word => {
+      if (word.length < 10) {
+        words.push(word);
+      }
     });
+    buttonChange("게임시작");
+    randomWordPick();
+  } else {
+    alert(`Random Words Loading is Failed`);
+  }
 }
 
 // 단어 일치 체크
