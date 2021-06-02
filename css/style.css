@@ -28,7 +28,7 @@ body,
 }
 
 .word-input-box {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .word-input {
@@ -40,23 +40,39 @@ body,
   display: flex;
   justify-content: space-between;
   width: 260px;
-  margin-top: 2rem;
+  height: 50px;
+  margin-top: 3rem;
   font-size: 1rem;
 }
 
+.game-info-box {
+  height: 100%;
+  width: 120px;
+}
 #time,
 #score {
-  font-size: 30px;
+  font-size: 2rem;
+}
+
+#time.redzone {
+  color: red;
+  font-size: 2rem;
 }
 
 .button {
+  box-sizing: border-box;
   width: 200px;
   height: 35px;
   background-color: #3b5999;
   color: #fff;
   border: none;
-  margin-top: 3rem;
+  margin-top: 4rem;
   cursor: pointer;
+}
+
+.button.waiting:hover {
+  transition: 0.1s;
+  border: 3px solid orange;
 }
 
 .loading {
@@ -83,6 +99,7 @@ footer {
 }
 
 #icon-github {
+  color: black;
   font-size: 1rem;
 }
 #icon-youtube {
