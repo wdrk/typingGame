@@ -1,4 +1,4 @@
-const GAME_TIME = 5;
+const GAME_TIME = 10;
 let score = 0;
 let time = GAME_TIME;
 let isPlaying = false;
@@ -50,6 +50,7 @@ function setButton(text) {
 function checkStatus() {
   if (!isPlaying && time === 0) {
     wordInput.disabled = true;
+    wordInput.value = "";
     wordInput.placeholder = "게임시작 버튼을 눌러주세요";
     setButton("게임시작");
     clearInterval(checkInterval);
