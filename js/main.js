@@ -1,4 +1,4 @@
-const GAME_TIME = 7;
+const GAME_TIME = 5;
 let score = 0;
 let time = GAME_TIME;
 let isPlaying = false;
@@ -33,11 +33,14 @@ function setButton(text) {
   button.innerText = text;
   if (text === "게임시작") {
     button.classList.remove("loading");
+    button.classList.add("waiting");
   } else if (text === "게임중") {
+    button.classList.remove("waiting");
     button.classList.add("loading");
     setWordInput(false);
     wordInput.focus();
   } else {
+    button.classList.remove("waiting");
     button.classList.add("loading");
     setWordInput(true);
   }
@@ -89,7 +92,11 @@ function checkMatch() {
 function setCountDown() {
   time > 0 ? time-- : (isPlaying = false);
   if (!isPlaying) {
+    timeDisplay.classList.remove("redzone");
     clearInterval(timeInterval);
+  }
+  if (4 > time && time > 0) {
+    timeDisplay.classList.add("redzone");
   }
   timeDisplay.innerText = time;
 }
